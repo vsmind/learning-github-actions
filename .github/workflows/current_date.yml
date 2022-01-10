@@ -25,3 +25,15 @@ jobs:
     steps:
       - name: Windows date
         run: Get-Date
+  ubuntu_depends_date:
+    name: Get date after runs from other jobs
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Ubuntu date depends on other runs
+        run: |
+          now=$(date)
+          echo "Current date: $now"
+    needs:
+      - ubuntu_date
+      - macos_date
+      - windows_date
