@@ -1,0 +1,13 @@
+name: Print the current date from different environments
+
+on: push
+
+jobs:
+  ubuntu_date:
+    name: Current date from ubuntu image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ubuntu date
+        run: |
+          now=$(date)
+          echo "Current date: $now"
