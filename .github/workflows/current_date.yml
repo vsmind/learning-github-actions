@@ -19,7 +19,7 @@ jobs:
         run: |
           now=$(date)
           echo "Current date: $now"
-  window_date:
+  windows_date:
     name: Current date from windows runner
     runs-on: windows-latest
     steps:
