@@ -1,0 +1,31 @@
+name: Run python script and create artifact from it
+
+on: push
+
+jobs:
+  run_python_script:
+    name: Run python script
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2.4.0
+      - name: Install python
+        uses: actions/setup-python@v2.3.1
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # opt
+      - name: Run script
+        run: python hello.py
+      - name: Check repo
+        run: ls -la
+  crete_artifact:
+    name: Create artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2.4.0
+      - name: Upload a python artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: python_artifact
+          path: ./hello.py
