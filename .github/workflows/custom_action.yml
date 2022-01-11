@@ -1,0 +1,11 @@
+name: Use custom action from another repo
+
+on: [ push ]
+
+jobs:
+  say_hi:
+    name: Gretings from the internet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use custom action
+        uses: vsmind/learning-github-custom-action@master
