@@ -8,4 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use custom action
+        id: hello
         uses: vsmind/learning-github-custom-action@master
+      - name: Greeting time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
