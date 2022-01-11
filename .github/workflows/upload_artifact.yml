@@ -1,0 +1,20 @@
+name: Upload artifact workflow
+
+on: push
+
+jobs:
+  upload_artifact:
+    name: Upload artifact with name from env variable
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: "test_file"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.4.0
+      - name: Rename file before upload
+        run: mv ./test_file_for_upload ./${{env.ARTIFACT_NAME}}
+      - name: Upload a Artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: test_artifact
+          path: ./${{env.ARTIFACT_NAME}}
